@@ -40,43 +40,46 @@ void PalyaParamaterketEsAknaSzamotBeker(int* poszlopokSzama, int* psorokSzama, i
     while(!sikeres)
     {
         sikeres = true;
-         if(scanf("%d:%d:%d \n", poszlopokSzama, psorokSzama, paknakSzama) != 3)
+        if(scanf("%d:%d:%d", poszlopokSzama, psorokSzama, paknakSzama) != 3)
         {
             printf("Próbálja újra, nem megfelelő a formátum!\n");
             sikeres = false;
+            scanf("%*[^\n]");
         }
+        else
+        {
+            if(*poszlopokSzama < 3)
+            {
+                printf("Túl kevés oszlop! (min3)\n");
+                sikeres = false;
+            }
+            else if(*poszlopokSzama > 20)
+            {
+                printf("Túl sok oszlop! (max20)\n");
+                sikeres = false;
+            }
 
-        if(*poszlopokSzama < 3)
-        {
-            printf("Túl kevés oszlop! (min3)\n");
-            sikeres = false;
-        }
-        else if(*poszlopokSzama > 20)
-        {
-            printf("Túl sok oszlop! (max20)\n");
-            sikeres = false;
-        }
+            if(*psorokSzama < 3)
+            {
+                printf("Túl kevés sor! (min3)\n");
+                sikeres = false;
+            }
+            else if(*psorokSzama > 20)
+            {
+                printf("Túl sok sor! (max20)\n");
+                sikeres = false;
+            }
 
-        if(*psorokSzama < 3)
-        {
-            printf("Túl kevés sor! (min3)\n");
-            sikeres = false;
-        }
-        else if(*psorokSzama > 20)
-        {
-            printf("Túl sok sor! (max20)\n");
-            sikeres = false;
-        }
-
-        if(*paknakSzama > (*psorokSzama * *poszlopokSzama / 2))
-        {
-            printf("Túl sok akna! (max sorok*oszlopok/2 méretű lehet)\n");
-            sikeres = false;
-        }
-        else if(*paknakSzama < 4)
-        {
-            printf("Túl kevés akna! (min 3)\n");
-            sikeres = false;
+            if(*paknakSzama > (*psorokSzama * *poszlopokSzama / 2))
+            {
+                printf("Túl sok akna! (max sorok*oszlopok/2 méretű lehet)\n");
+                sikeres = false;
+            }
+            else if(*paknakSzama < 4)
+            {
+                printf("Túl kevés akna! (min 3)\n");
+                sikeres = false;
+            }
         }
 
 

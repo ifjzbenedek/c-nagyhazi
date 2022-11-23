@@ -8,7 +8,7 @@ int main()
 {
     srand(time(0));
     int sorokSzama, oszlopokSzama, aknakSzama;
-    PalyaParamaterketEsAknaSzamotBeker(sorokSzama, oszlopokSzama, aknakSzama);
+    PalyaParamaterketEsAknaSzamotBeker(&sorokSzama, &oszlopokSzama, &aknakSzama);
     Palya palya = PalyatLetrehoz(sorokSzama, oszlopokSzama);
     TablatFeltolt(palya);
     AknaElhelyez(palya, aknakSzama);

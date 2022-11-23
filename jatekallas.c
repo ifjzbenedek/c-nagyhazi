@@ -7,6 +7,8 @@
 Palya PalyatLetrehoz (int sorokszama, int oszlopokszama)
 {
     Palya palya;
+    palya.sorokSzama = sorokszama;
+    palya.oszlopokSzama = oszlopokszama;
     palya.tabla = (Cella**) malloc(palya.sorokSzama * sizeof(Cella*));
     for(int i = 0; i < palya.sorokSzama; ++i)
     {

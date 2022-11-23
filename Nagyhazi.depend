@@ -4,7 +4,7 @@
 	<stdlib.h>
 	<stdbool.h>
 
-1669234681 source:c:\zozi\codeblocks\c-nagyhazi\jatekallas.c
+1669237241 source:c:\zozi\codeblocks\c-nagyhazi\jatekallas.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
@@ -16,14 +16,14 @@
 
 1669234095 c:\zozi\codeblocks\c-nagyhazi\megjelenites.h
 
-1669234602 source:c:\zozi\codeblocks\c-nagyhazi\main.c
+1669236696 source:c:\zozi\codeblocks\c-nagyhazi\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
 	"jatekallas.h"
 	"megjelenites.h"
 
-1669234900 source:c:\zozi\codeblocks\c-nagyhazi\megjelenites.c
+1669237371 source:c:\zozi\codeblocks\c-nagyhazi\megjelenites.c
 	<stdio.h>
 	<stdlib.h>
 	"jatekallas.h"
