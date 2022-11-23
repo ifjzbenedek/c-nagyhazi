@@ -24,8 +24,7 @@ typedef struct Palya
 
 bool Lepes(Palya palya);
 bool NyertE(Palya palya);
-void AknaElhelyez(Palya palya, int aknakSzama);
+void Kezdes(Palya palya, int aknakSzama);
 void TablatFeltolt(Palya palya);
-Palya PalyatLetrehoz(int sorokSzama, int oszlopokSzama);
 
 #endif // JATEKALLAS_H_INCLUDED

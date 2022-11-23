@@ -4,18 +4,6 @@
 #include "jatekallas.h"
 #include "megjelenites.h"
 
-Palya PalyatLetrehoz (int sorokszama, int oszlopokszama)
-{
-    Palya palya;
-    palya.tabla = (Cella**) malloc(palya.sorokSzama * sizeof(Cella*));
-    for(int i = 0; i < palya.sorokSzama; ++i)
-    {
-        Cella* sor;
-        sor = (Cella*) malloc(palya.oszlopokSzama * sizeof(Cella));
-        palya.tabla[i] = sor;
-    }
-    return palya;
-}
 int Sorsol(int sorokSzama, int oszlopokSzama)
 {
     return rand()%(sorokSzama*oszlopokSzama);
@@ -37,7 +25,7 @@ void TablatFeltolt(Palya palya)
 }
 
 
-void AknaElhelyez(Palya palya, int aknakSzama)
+void Kezdes(Palya palya, int aknakSzama)
 {
     for(int i = 0; i < aknakSzama; ++i)
     {

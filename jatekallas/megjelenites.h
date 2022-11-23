@@ -7,6 +7,4 @@ void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* lepesTipus);
 
 void LepesTipusokatKiir();
 
-void PalyaParamaterketEsAknaSzamotBeker();
-
 #endif // MEGJELENITES_H_INCLUDED

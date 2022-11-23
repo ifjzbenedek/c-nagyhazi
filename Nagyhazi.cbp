@@ -42,6 +42,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="megjelenites.h" />
+		<Unit filename="mentes.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
