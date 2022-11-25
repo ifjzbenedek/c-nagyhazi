@@ -116,7 +116,7 @@ bool Lepes(Palya palya)
 {
     int lepesSorSzam, lepesOszlopSzam;
     char lepesTipus;
-    LepestBeker(&lepesSorSzam, &lepesOszlopSzam, &lepesTipus);
+    LepestBeker(&lepesSorSzam, &lepesOszlopSzam, &lepesTipus, palya.sorokSzama, palya.oszlopokSzama);
     if(lepesTipus == 'M')
     {
         palya.tabla[lepesSorSzam][lepesOszlopSzam].all = megjelolve;

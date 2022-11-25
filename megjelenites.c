@@ -90,15 +90,46 @@ void PalyaParamaterketEsAknaSzamotBeker(int* poszlopokSzama, int* psorokSzama, i
 
 
 }
-void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus)
+
+void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus, int sorokSzama, int oszlopokSzama)
 {
     printf("Várom a következõ lépését típus:sor:oszlop formátumban!\n");
     char lepesSor, lepesOszlop, lepesTipus;
-    scanf("\n%c:%c:%c", &lepesTipus, &lepesSor, &lepesOszlop);
+    bool sikeres = false;
+    while (!sikeres)
+    {
+        sikeres = true;
+        if (scanf("\n%c:%c:%c", &lepesTipus, &lepesSor, &lepesOszlop) != 3)
+        {
+            printf("Nem megfelelő a formátum, próbálja újra!\n");
+            scanf("%*[^\n]");
+            sikeres = false;
+        }
+        else
+        {
+            if (lepesSor - 'A' < 0 || lepesSor - 'A' >= sorokSzama)
+            {
+                printf("Nem létezik ilyen sor! Próbálja újra!\n");
+                sikeres = false;
+            }
+            else if (lepesOszlop - 'a' < 0 || lepesOszlop - 'a' >= oszlopokSzama)
+            {
+                printf("Nem létezik ilyen oszlop! Próbálja újra!\n");
+                sikeres = false;
+            }
+            else if (lepesTipus != 'F' && lepesTipus != 'M')
+            {
+                printf("Nem létezik ilyen funkció! Próbálja újra!\n");
+                sikeres = false;
+            }
+        }
+    }
+    
     *plepesTipus = lepesTipus;
     *plepesSorSzam = lepesSor - 'A';
     *plepesOszlopSzam = lepesOszlop - 'a';
 }
+
 void LepesTipusokatKiir()
 {
     printf("Lehetséges lépések: \n   -F : felfed egy mezőt\n   -M : megjelöl egy mezőt zászlóval\n");
@@ -106,7 +137,7 @@ void LepesTipusokatKiir()
 
 void MenuKirajzol()
 {
-    printf("Új játék vagy régi játék betöltése. Új játék esetén írd be, hogy “új”, mentett játék esetén pedig, hogy “régi”:\n");
+    printf("Új játék vagy régi játék betöltése. Új játék esetén írd be, hogy “uj”, mentett játék esetén pedig, hogy “regi”:\n");
 }
 
 char* JatekKivalasztas()
@@ -126,11 +157,21 @@ char* JatekKivalasztas()
         }
         else if(strcmp("uj", valasztas) != 0 && strcmp("regi", valasztas) != 0)
         {
-            printf("Kérem regi vagy uj közül válasszon!\n");
+            printf("Kérem ˝regi˝ vagy ˝uj˝ közül válasszon!\n");
             sikeres = false;
             scanf("%*[^\n]");
         }
 
     }
     return valasztas;
+}
+
+void GyozelmetKiir()
+{
+    printf("Aknára léptett, sajnos vesztett. Új játék kezdéséhez nyomjon meg egy billentyűt!");
+}
+
+void VeresegetKiir()
+{
+    printf("Gratulálunk, győzött! Az ideje: ");
 }

@@ -41,14 +41,14 @@ int main()
         Ment(palya, oszlopokSzama, sorokSzama);
         if(Lepes(palya))
         {
-            printf("Sajnos aknára léptél és vesztettél!\n");
+            VeresegetKiir();
             vege = true;
             MindentFelold(palya);
             MentestTorol();
         }
         else if(NyertE(palya))
         {
-            printf("Gratulálunk, nyertél!\n");
+            GyozelmetKiir();
             vege = true;
             MindentFelold(palya);
             MentestTorol();
