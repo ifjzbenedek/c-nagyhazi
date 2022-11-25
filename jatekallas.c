@@ -61,7 +61,7 @@ int SzomszedosAknaszam(Palya palya, int sor, int oszlop)
     {
         for(int j = oszlop - 1; j <= oszlop + 1; ++j)
         {
-            if(i <= palya.sorokSzama-1 & j <= palya.oszlopokSzama-1 & i >= 0 && j >= 0 && palya.tabla[i][j].aknaE && !(sor == i && oszlop == j))
+            if(i <= palya.sorokSzama-1 && j <= palya.oszlopokSzama-1 && i >= 0 && j >= 0 && palya.tabla[i][j].aknaE && !(sor == i && oszlop == j))
             {
                 kornyezoAknaszam++;
             }
@@ -97,7 +97,6 @@ bool NyertE(Palya palya)
                 return false;
         }
     }
-    //MindentFelold(palya);
 
     return true;
 }
@@ -108,7 +107,6 @@ bool RobbanE(Palya palya, int sor, int oszlop)
     {
         return true;
     }
-    //MindentFelold(palya);
 
     return false;
 
@@ -140,7 +138,7 @@ bool Lepes(Palya palya)
     return false;
 }
 
-/*void MindentFelold(Palya palya)
+void MindentFelold(Palya palya)
 {
     for(int i = 0; i < palya.sorokSzama; ++i)
     {
@@ -149,4 +147,4 @@ bool Lepes(Palya palya)
             palya.tabla[i][j].all = feloldva;
         }
     }
-}*/
+}

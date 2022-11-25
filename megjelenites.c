@@ -12,26 +12,26 @@ void Kirajzol(Palya palya)
         for(int j = 0; j < palya.oszlopokSzama; ++j)
         {
             if(palya.tabla[i][j].all == feloldatlan)
-                printf("#");
+                printf("# ");
             else if(palya.tabla[i][j].all == megjelolve)
-                printf("Z");
+                printf("Z ");
             else
             {
                 if(palya.tabla[i][j].all == feloldva && palya.tabla[i][j].aknaE)
-                    printf("*");
+                    printf("* ");
                 else
                 {
                     int aknakKorulotte = SzomszedosAknaszam(palya, i, j);
-                    printf("%d", aknakKorulotte);
+                    printf("%d ", aknakKorulotte);
                 }
             }
         }
-        printf("%c", 'A' + i);
+        printf("%c ", 'A' + i);
         printf("\n");
     }
     for(int i = 0; i < palya.oszlopokSzama; i++)
     {
-        printf("%c", 'a'+i);
+        printf("%c ", 'a'+i);
     }
     printf("\n");
 }
@@ -78,7 +78,7 @@ void PalyaParamaterketEsAknaSzamotBeker(int* poszlopokSzama, int* psorokSzama, i
                 printf("Túl sok akna! (max sorok*oszlopok/2 méretű lehet)\n");
                 sikeres = false;
             }
-            else if(*paknakSzama < 4)
+            else if(*paknakSzama < 3)
             {
                 printf("Túl kevés akna! (min 3)\n");
                 sikeres = false;

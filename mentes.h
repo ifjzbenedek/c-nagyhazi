@@ -10,4 +10,6 @@ Palya Beolvas(int* psorokSzama, int* poszlopokSzama);
 
 bool LetezikEMentes();
 
+void MentestTorol();
+
 #endif // MENTES_H_INCLUDED

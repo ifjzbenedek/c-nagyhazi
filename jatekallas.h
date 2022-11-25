@@ -27,5 +27,6 @@ bool NyertE(Palya palya);
 void AknaElhelyez(Palya palya, int aknakSzama);
 void TablatFeltolt(Palya palya);
 Palya PalyatLetrehoz(int sorokSzama, int oszlopokSzama);
+void MindentFelold(Palya palya);
 
 #endif // JATEKALLAS_H_INCLUDED

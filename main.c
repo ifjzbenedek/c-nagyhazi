@@ -10,47 +10,51 @@ int main()
     srand(time(0));
     int sorokSzama, oszlopokSzama;
     Palya palya;
-
+    bool kelleUjat = false;
     if(LetezikEMentes())
     {
         MenuKirajzol();
         char* mode = JatekKivalasztas();
-        if(strcmp(mode, "régi") == 0)
+        if(strcmp(mode, "regi") == 0)
             palya = Beolvas(&sorokSzama, &oszlopokSzama);
         else
-        {
-            int aknakSzama;
-            PalyaParamaterketEsAknaSzamotBeker(&sorokSzama, &oszlopokSzama, &aknakSzama);
-            Palya palya = PalyatLetrehoz(sorokSzama, oszlopokSzama);
-            TablatFeltolt(palya);
-            AknaElhelyez(palya, aknakSzama);
-        }
+            kelleUjat = true;
     }
-    int aknakSzama;
-    PalyaParamaterketEsAknaSzamotBeker(&sorokSzama, &oszlopokSzama, &aknakSzama);
-    palya = PalyatLetrehoz(sorokSzama, oszlopokSzama);
-    TablatFeltolt(palya);
-    AknaElhelyez(palya, aknakSzama);
+    else
+        kelleUjat = true;
+
+    if(kelleUjat)
+    {
+        int aknakSzama;
+        PalyaParamaterketEsAknaSzamotBeker(&sorokSzama, &oszlopokSzama, &aknakSzama);
+        palya = PalyatLetrehoz(sorokSzama, oszlopokSzama);
+        TablatFeltolt(palya);
+        AknaElhelyez(palya, aknakSzama);
+    }
+
     Kirajzol(palya);
 
-    bool nyertE = false;
-    bool vesztettE = false;
+    bool vege = false;
     LepesTipusokatKiir();
-    while(!nyertE && !vesztettE)
+    while(!vege)
     {
         Ment(palya, oszlopokSzama, sorokSzama);
         if(Lepes(palya))
         {
             printf("Sajnos aknára léptél és vesztettél!\n");
-            vesztettE = true;
+            vege = true;
+            MindentFelold(palya);
+            MentestTorol();
         }
         else if(NyertE(palya))
         {
             printf("Gratulálunk, nyertél!\n");
-            nyertE = true;
+            vege = true;
+            MindentFelold(palya);
+            MentestTorol();
         }
+        
         Kirajzol(palya);
-
+        
     }
-
 }

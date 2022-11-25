@@ -38,11 +38,11 @@ void Ment(Palya palya, int oszlopokSzama, int sorokSzama)
                  fprintf(fp, "N ");
 
             if(palya.tabla[i][j].all == feloldatlan)
-                fprintf(fp, "N");
+                fprintf(fp, "N ");
             else if(palya.tabla[i][j].all == feloldva)
-                fprintf(fp, "I");
+                fprintf(fp, "I ");
             else
-                fprintf(fp, "Z");
+                fprintf(fp, "Z ");
         }
         fprintf(fp, "\n");
     }
@@ -77,7 +77,7 @@ Palya Beolvas(int* psorokSzama, int* poszlopokSzama)
         perror("A mentett játék nem betölthető!");
     }
     Palya palya;
-    if(fscanf(fp, "%d %d", poszlopokSzama, psorokSzama) == 2)
+    if(fscanf(fp, "%d %d\n", poszlopokSzama, psorokSzama) == 2)
     {
         palya = PalyatLetrehoz(*psorokSzama, *poszlopokSzama);
     }
@@ -95,18 +95,9 @@ Palya Beolvas(int* psorokSzama, int* poszlopokSzama)
     fclose(fp);
     return palya;
 }
-/*
-Cella aktCella;
-    for(int i = 0; i < sorokSzama; ++i)
-    {
-        for(int j = 0; j < oszlopokSzama; ++j)
-        {
-            fscanf(fp, "%c %c ", &aknaE, &allapot);
-            aktCella = Beallit(aknaE, allapot);
-            palya.tabla[i][j].aknaE = aktCella.aknaE;
-            palya.tabla[i][j].all = aktCella.all;
-        }
-        fscanf(fp,"\n");
-    }
 
-*/
+void MentestTorol()
+{
+    remove("mentettallas.txt");
+
+}
