@@ -168,10 +168,11 @@ char* JatekKivalasztas()
 
 void GyozelmetKiir()
 {
-    printf("Aknára léptett, sajnos vesztett. Új játék kezdéséhez nyomjon meg egy billentyűt!");
+    printf("Gratulálunk, győzött! Az ideje: \n");
+    
 }
 
 void VeresegetKiir()
 {
-    printf("Gratulálunk, győzött! Az ideje: ");
+    printf("Aknára léptett, sajnos vesztett. Új játék kezdéséhez nyomjon meg egy billentyűt!\n");
 }

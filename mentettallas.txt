@@ -1,9 +1,9 @@
-3 8
-N N N N N I 
-N N A N N N 
-N N N N N N 
-N N N N A N 
-N N N N A N 
-N N N N N N 
-N N N N N N 
-N N A N N N 
+4 8
+N I N I N I N I 
+A Z N I N I N I 
+N I N I N I N I 
+N I N I N I N I 
+N I N I N I N I 
+N I N I A N N N 
+N I N I N N N N 
+A N N N N N N N 
