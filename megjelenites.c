@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "jatekallas.h"
+#include <string.h>
+
+#pragma warning( disable : 4996 )
 
 void Kirajzol(Palya palya)
 {
@@ -99,4 +102,35 @@ void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus)
 void LepesTipusokatKiir()
 {
     printf("Lehetséges lépések: \n   -F : felfed egy mezőt\n   -M : megjelöl egy mezőt zászlóval\n");
+}
+
+void MenuKirajzol()
+{
+    printf("Új játék vagy régi játék betöltése. Új játék esetén írd be, hogy “új”, mentett játék esetén pedig, hogy “régi”:\n");
+}
+
+char* JatekKivalasztas()
+{
+    // TODO Ékezetet olvasson!
+    char* regi = "regi";
+    char valasztas[100];
+    bool sikeres = false;
+    while(!sikeres)
+    {
+        sikeres = true;
+        if(scanf("%s", valasztas) != 1)
+        {
+            printf("Próbálja újra, nem megfelelő a formátum!\n");
+            sikeres = false;
+            scanf("%*[^\n]");
+        }
+        else if(strcmp("uj", valasztas) != 0 && strcmp("regi", valasztas) != 0)
+        {
+            printf("Kérem regi vagy uj közül válasszon!\n");
+            sikeres = false;
+            scanf("%*[^\n]");
+        }
+
+    }
+    return valasztas;
 }

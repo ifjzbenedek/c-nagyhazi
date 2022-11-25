@@ -76,7 +76,7 @@ void Tisztitas(int sor, int oszlop, Palya palya)
     {
         for(int j = oszlop - 1; j <= oszlop + 1; ++j)
         {
-            if(i <= palya.sorokSzama-1 & j <= palya.oszlopokSzama-1 & i >= 0 && j >= 0 & palya.tabla[i][j].all == feloldatlan)
+            if(i <= palya.sorokSzama-1 && j <= palya.oszlopokSzama-1 && i >= 0 && j >= 0 && palya.tabla[i][j].all == feloldatlan)
             {
                 palya.tabla[i][j].all = feloldva;
                 if(SzomszedosAknaszam(palya, i, j) == 0)
@@ -134,7 +134,7 @@ bool Lepes(Palya palya)
     }
     else
     {
-        printf("\nNincs ilyen utasítás!");
+        printf("Nincs ilyen utasítás!");
         Lepes(palya);
     }
     return false;

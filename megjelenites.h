@@ -1,12 +1,14 @@
 #ifndef MEGJELENITES_H_INCLUDED
 #define MEGJELENITES_H_INCLUDED
 
-Kirajzol(Palya palya);
+void Kirajzol(Palya palya);
 
 void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* lepesTipus);
 
 void LepesTipusokatKiir();
 
 void PalyaParamaterketEsAknaSzamotBeker();
+
+char* JatekKivalasztas();
 
 #endif // MEGJELENITES_H_INCLUDED

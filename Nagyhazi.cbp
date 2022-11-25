@@ -45,6 +45,7 @@
 		<Unit filename="mentes.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mentes.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
