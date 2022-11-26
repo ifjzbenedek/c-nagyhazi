@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "jatekallas.h"
+#include <time.h>
 
 #pragma warning( disable : 4996 )
 
@@ -15,10 +16,10 @@ bool LetezikEMentes()
     }
     return false;
 }
-void Ment(Palya palya, int oszlopokSzama, int sorokSzama)
+void Ment(Palya palya, int oszlopokSzama, int sorokSzama, time_t kezdesIdo)
 {
     FILE *fp;
-
+    time_t aktIdo;
     fp = fopen("mentettallas.txt", "w");
 
     if(fp == NULL)
@@ -27,7 +28,7 @@ void Ment(Palya palya, int oszlopokSzama, int sorokSzama)
         return;
     }
 
-    fprintf(fp,"%d %d\n", oszlopokSzama, sorokSzama);
+    fprintf(fp,"%d %d %d\n", oszlopokSzama, sorokSzama, time(&aktIdo) - kezdesIdo);
     for(int i = 0; i < sorokSzama; ++i)
     {
         for(int j = 0; j < oszlopokSzama; ++j)
@@ -67,7 +68,7 @@ Cella Beallit(char aknaE, char allapot)
     return cella;
 }
 
-Palya Beolvas(int* psorokSzama, int* poszlopokSzama)
+Palya Beolvas(int* psorokSzama, int* poszlopokSzama, int* pelteltIdo)
 {
     FILE *fp;
     fp = fopen("mentettallas.txt", "r");
@@ -77,7 +78,7 @@ Palya Beolvas(int* psorokSzama, int* poszlopokSzama)
         perror("A mentett játék nem betölthető!");
     }
     Palya palya;
-    if(fscanf(fp, "%d %d\n", poszlopokSzama, psorokSzama) == 2)
+    if(fscanf(fp, "%d %d %d\n", poszlopokSzama, psorokSzama, pelteltIdo) == 3)
     {
         palya = PalyatLetrehoz(*psorokSzama, *poszlopokSzama);
     }

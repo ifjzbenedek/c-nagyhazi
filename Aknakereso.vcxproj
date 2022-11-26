@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="c-econio\econio.c" />
     <ClCompile Include="jatekallas.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="megjelenites.c" />
     <ClCompile Include="mentes.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="c-econio\econio.h" />
     <ClInclude Include="jatekallas.h" />
     <ClInclude Include="megjelenites.h" />
     <ClInclude Include="mentes.h" />

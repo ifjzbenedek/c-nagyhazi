@@ -3,7 +3,14 @@
 #include <stdbool.h>
 #include "jatekallas.h"
 #include "megjelenites.h"
+#include <time.h>
 
+/*int IdotSzamol(time_t kezdesIdo)
+{
+    time_t aktIdo;
+    return time(&aktIdo) - kezdesIdo;
+}
+*/
 Palya PalyatLetrehoz (int sorokszama, int oszlopokszama)
 {
     Palya palya;
@@ -23,7 +30,6 @@ int Sorsol(int sorokSzama, int oszlopokSzama)
     return rand()%(sorokSzama*oszlopokSzama);
 }
 
-
 void TablatFeltolt(Palya palya)
 {
     for(int i = 0; i < palya.sorokSzama; ++i)
@@ -37,7 +43,6 @@ void TablatFeltolt(Palya palya)
         }
     }
 }
-
 
 void AknaElhelyez(Palya palya, int aknakSzama)
 {
@@ -116,7 +121,7 @@ bool Lepes(Palya palya)
 {
     int lepesSorSzam, lepesOszlopSzam;
     char lepesTipus;
-    LepestBeker(&lepesSorSzam, &lepesOszlopSzam, &lepesTipus, palya.sorokSzama, palya.oszlopokSzama);
+    LepestBeker(&lepesSorSzam, &lepesOszlopSzam, &lepesTipus, palya);
     if(lepesTipus == 'M')
     {
         palya.tabla[lepesSorSzam][lepesOszlopSzam].all = megjelolve;

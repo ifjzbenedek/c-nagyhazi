@@ -2,11 +2,19 @@
 #include <stdlib.h>
 #include "jatekallas.h"
 #include <string.h>
+#include <time.h>
+#include "c-econio/econio.h"
 
 #pragma warning( disable : 4996 )
+void KepernyoTorolEsKezdesbeMozog()
+{
+    econio_clrscr();
+    econio_gotoxy(0, 0);
+}
 
 void Kirajzol(Palya palya)
 {
+    KepernyoTorolEsKezdesbeMozog();
     for(int i = 0; i < palya.sorokSzama; ++i)
     {
         for(int j = 0; j < palya.oszlopokSzama; ++j)
@@ -91,7 +99,7 @@ void PalyaParamaterketEsAknaSzamotBeker(int* poszlopokSzama, int* psorokSzama, i
 
 }
 
-void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus, int sorokSzama, int oszlopokSzama)
+void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus, Palya palya)
 {
     printf("Várom a következõ lépését típus:sor:oszlop formátumban!\n");
     char lepesSor, lepesOszlop, lepesTipus;
@@ -107,12 +115,12 @@ void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus, i
         }
         else
         {
-            if (lepesSor - 'A' < 0 || lepesSor - 'A' >= sorokSzama)
+            if (lepesSor - 'A' < 0 || lepesSor - 'A' >= palya.sorokSzama)
             {
                 printf("Nem létezik ilyen sor! Próbálja újra!\n");
                 sikeres = false;
             }
-            else if (lepesOszlop - 'a' < 0 || lepesOszlop - 'a' >= oszlopokSzama)
+            else if (lepesOszlop - 'a' < 0 || lepesOszlop - 'a' >= palya.oszlopokSzama)
             {
                 printf("Nem létezik ilyen oszlop! Próbálja újra!\n");
                 sikeres = false;
@@ -120,6 +128,11 @@ void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus, i
             else if (lepesTipus != 'F' && lepesTipus != 'M')
             {
                 printf("Nem létezik ilyen funkció! Próbálja újra!\n");
+                sikeres = false;
+            }
+            else if (lepesTipus == 'M' && palya.tabla[lepesSor - 'A'][lepesOszlop - 'a'].all == feloldva)
+            {
+                printf("Ez már fel van oldva! Csináljon mást!\n");
                 sikeres = false;
             }
         }
@@ -166,13 +179,14 @@ char* JatekKivalasztas()
     return valasztas;
 }
 
-void GyozelmetKiir()
+void GyozelmetKiir(int elteltIdo)
 {
-    printf("Gratulálunk, győzött! Az ideje: \n");
-    
+    printf("Gratulálunk, győzött! Az ideje: %d másodperc\n", elteltIdo);
 }
 
 void VeresegetKiir()
 {
     printf("Aknára léptett, sajnos vesztett. Új játék kezdéséhez nyomjon meg egy billentyűt!\n");
 }
+
+
