@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "jatekallas.h"
 #include <time.h>
+#include "jatekallas.h"
+#include "debugmalloc.h"
+
 
 #pragma warning( disable : 4996 )
 
@@ -28,7 +30,7 @@ void Ment(Palya palya, int oszlopokSzama, int sorokSzama, time_t kezdesIdo)
         return;
     }
 
-    fprintf(fp,"%d %d %d\n", oszlopokSzama, sorokSzama, time(&aktIdo) - kezdesIdo);
+    fprintf(fp,"%d %d %d\n", oszlopokSzama, sorokSzama, (int)(time(&aktIdo) - kezdesIdo));
     for(int i = 0; i < sorokSzama; ++i)
     {
         for(int j = 0; j < oszlopokSzama; ++j)

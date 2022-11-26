@@ -21,9 +21,14 @@ typedef struct Palya
 {
     Cella** tabla;
     int oszlopokSzama, sorokSzama;
+    // -1, ha nem robbant még
+    int robbanoX;
+    // -1, ha nem robbant még
+    int robbanoY;
 } Palya;
 
-bool Lepes(Palya palya);
+void PalyaFelszabadit(Palya palya);
+bool Lepes(Palya* palya);
 bool NyertE(Palya palya);
 void AknaElhelyez(Palya palya, int aknakSzama);
 void TablatFeltolt(Palya palya);

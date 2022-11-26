@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "jatekallas.h"
 #include <string.h>
 #include <time.h>
 #include "c-econio/econio.h"
+#include "jatekallas.h"
+#include "debugmalloc.h"
+
 
 #pragma warning( disable : 4996 )
 void KepernyoTorolEsKezdesbeMozog()
@@ -21,16 +23,34 @@ void Kirajzol(Palya palya)
         {
             if(palya.tabla[i][j].all == feloldatlan)
                 printf("# ");
-            else if(palya.tabla[i][j].all == megjelolve)
+            else if (palya.tabla[i][j].all == megjelolve)
+            {
+                econio_textcolor(COL_RED);
                 printf("Z ");
+                econio_textcolor(COL_WHITE);
+            }
             else
             {
                 if(palya.tabla[i][j].all == feloldva && palya.tabla[i][j].aknaE)
-                    printf("* ");
+                { 
+                    if (palya.robbanoX == i && palya.robbanoY == j)
+                    {
+                        econio_textcolor(COL_RED);
+                        printf("* ");
+                        econio_textcolor(COL_WHITE);
+                    }
+                    else
+                        printf("* ");
+                }
+                    
                 else
                 {
                     int aknakKorulotte = SzomszedosAknaszam(palya, i, j);
-                    printf("%d ", aknakKorulotte);
+                    if (aknakKorulotte == 0)
+                        printf("  ");
+                    else
+                        printf("%d ", aknakKorulotte);
+                       
                 }
             }
         }
@@ -41,7 +61,7 @@ void Kirajzol(Palya palya)
     {
         printf("%c ", 'a'+i);
     }
-    printf("\n");
+    printf("\n\n");
 }
 
 void PalyaParamaterketEsAknaSzamotBeker(int* poszlopokSzama, int* psorokSzama, int* paknakSzama)

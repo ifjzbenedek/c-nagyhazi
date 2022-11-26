@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 #include "jatekallas.h"
 #include "megjelenites.h"
-#include <time.h>
+#include "debugmalloc.h"
 
 /*int IdotSzamol(time_t kezdesIdo)
 {
@@ -11,9 +12,12 @@
     return time(&aktIdo) - kezdesIdo;
 }
 */
+
 Palya PalyatLetrehoz (int sorokszama, int oszlopokszama)
 {
     Palya palya;
+    palya.robbanoX = -1;
+    palya.robbanoY = -1;
     palya.sorokSzama = sorokszama;
     palya.oszlopokSzama = oszlopokszama;
     palya.tabla = (Cella**) malloc(palya.sorokSzama * sizeof(Cella*));
@@ -24,6 +28,15 @@ Palya PalyatLetrehoz (int sorokszama, int oszlopokszama)
         palya.tabla[i] = sor;
     }
     return palya;
+}
+
+void PalyaFelszabadit(Palya palya)
+{
+    for (int i = 0; i < palya.sorokSzama; ++i)
+    {
+        free(palya.tabla[i]);
+    }
+    free(palya.tabla);
 }
 int Sorsol(int sorokSzama, int oszlopokSzama)
 {
@@ -117,29 +130,32 @@ bool RobbanE(Palya palya, int sor, int oszlop)
 
 }
 
-bool Lepes(Palya palya)
+//Cím szerint veszi át a pályát, mert módosítja benne a robbanó akna koordinátáit
+bool Lepes(Palya* palya)
 {
     int lepesSorSzam, lepesOszlopSzam;
     char lepesTipus;
-    LepestBeker(&lepesSorSzam, &lepesOszlopSzam, &lepesTipus, palya);
+    LepestBeker(&lepesSorSzam, &lepesOszlopSzam, &lepesTipus, *palya);
     if(lepesTipus == 'M')
     {
-        palya.tabla[lepesSorSzam][lepesOszlopSzam].all = megjelolve;
+        palya->tabla[lepesSorSzam][lepesOszlopSzam].all = megjelolve;
     }
     else if(lepesTipus == 'F')
     {
-        palya.tabla[lepesSorSzam][lepesOszlopSzam].all = feloldva;
-        if(SzomszedosAknaszam(palya, lepesSorSzam, lepesOszlopSzam) == 0)
+        palya->tabla[lepesSorSzam][lepesOszlopSzam].all = feloldva;
+        if(SzomszedosAknaszam(*palya, lepesSorSzam, lepesOszlopSzam) == 0)
         {
-            Tisztitas(lepesSorSzam,lepesOszlopSzam,palya);
+            Tisztitas(lepesSorSzam,lepesOszlopSzam, *palya);
         }
-        return RobbanE(palya, lepesSorSzam, lepesOszlopSzam);
+        bool robbanE = RobbanE(*palya, lepesSorSzam, lepesOszlopSzam);
+        if (robbanE)
+        {
+            palya->robbanoX = lepesSorSzam;
+            palya->robbanoY = lepesOszlopSzam;
+        }
+        return robbanE;
     }
-    else
-    {
-        printf("Nincs ilyen utasítás!");
-        Lepes(palya);
-    }
+
     return false;
 }
 

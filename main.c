@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
+#include <stdint.h>
 #include "jatekallas.h"
 #include "megjelenites.h"
 #include "mentes.h"
-#include <time.h>
-#include <stdint.h>
+#include "debugmalloc.h"
 
 int main()
 {
@@ -14,7 +15,7 @@ int main()
     int sorokSzama, oszlopokSzama;
     Palya palya;
     time_t kezdIdo, aktIdo;
-    int elteltIdo;
+    
     bool kelleUjat = false;
     if(LetezikEMentes())
     {
@@ -22,6 +23,7 @@ int main()
         char* mode = JatekKivalasztas();
         if (strcmp(mode, "regi") == 0)
         {
+            int elteltIdo;
             palya = Beolvas(&sorokSzama, &oszlopokSzama, &elteltIdo);
             kezdIdo = time(&aktIdo) - elteltIdo;
         }
@@ -47,7 +49,7 @@ int main()
     while(!vege)
     {
         Ment(palya, oszlopokSzama, sorokSzama, kezdIdo);
-        if(Lepes(palya))
+        if(Lepes(&palya))
         {
             MindentFelold(palya);
             Kirajzol(palya);
@@ -65,4 +67,5 @@ int main()
             Kirajzol(palya);
     }
     MentestTorol();
+    PalyaFelszabadit(palya);
 }

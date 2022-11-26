@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="c-econio\econio.h" />
+    <ClInclude Include="debugmalloc.h" />
     <ClInclude Include="jatekallas.h" />
     <ClInclude Include="megjelenites.h" />
     <ClInclude Include="mentes.h" />
