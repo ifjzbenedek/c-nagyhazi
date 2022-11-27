@@ -190,10 +190,8 @@ bool JatekKivalasztas_UjE()
     }
 }
 
-void GyozelmetKiir(int kezdIdo)
+void GyozelmetKiir(int perc, int mp)
 {
-    int perc, mp;
-    IdotSzamolPercben(&perc, &mp, kezdIdo);
     printf("Gratulálunk, nyert! Az ideje: %d perc %d másodperc\n", perc, mp);
 }
 

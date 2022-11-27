@@ -4,7 +4,7 @@
 
 void Ment(Palya* palya, time_t kezdesIdo);
 
-void Beolvas(Palya* palya, time_t* elteltIdo);
+void Beolvas(Palya* palya, time_t* pelteltIdo);
 
 bool LetezikEMentes();
 

@@ -11,7 +11,7 @@ void PalyaParamaterketEsAknaSzamotBekerEsBeallit(Palya* palya);
 
 bool JatekKivalasztas_UjE();
 
-void GyozelmetKiir(int ido);
+void GyozelmetKiir(int perc, int mp);
 
 void VeresegetKiir();
 
@@ -20,5 +20,7 @@ void UjrainditasKiir();
 void IdoLetelt();
 
 void IdoKorlatotKiir(int idoKorlat);
+
+void MenuKirajzol();
 
 #endif // MEGJELENITES_H_INCLUDED

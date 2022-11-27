@@ -5,7 +5,6 @@
 #include "palya.h"
 #include "debugmalloc.h"
 
-
 bool LetezikEMentes()
 {
     FILE *fp;
@@ -16,6 +15,7 @@ bool LetezikEMentes()
     }
     return false;
 }
+
 void Ment(Palya* palya, time_t kezdesIdo)
 {
     FILE *fp;

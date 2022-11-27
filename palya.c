@@ -6,24 +6,6 @@
 #include "megjelenites.h"
 #include "debugmalloc.h"
 
-void IdotSzamolPercben(int* pperc, int* pmp, int kezdesIdo)
-{
-    time_t aktIdo;
-    int intAktIdo = time(&aktIdo);
-    *pperc = (intAktIdo - kezdesIdo) / 60;
-    *pmp = ((intAktIdo - kezdesIdo) - (*pperc) * 60);
-}
-
-int IdoKorlatotSzamol(Palya* palya)
-{
-    return palya->oszlopokSzama * palya->sorokSzama / 5;
-}
-
-bool VanEMegIdo(int idoKorlat, int kezdesIdo)
-{
-    time_t aktIdo;
-    return idoKorlat > (time(&aktIdo) - kezdesIdo) / 60;
-}
 
 //Olyan pályát vár, ahol már meg van adva a sorok és az oszlopok száma
 void PalyaCellakatLetrehoz (Palya* palya)
@@ -47,6 +29,7 @@ void PalyaFelszabadit(Palya* palya)
     }
     free(palya->tabla);
 }
+
 int Sorsol(int sorokSzama, int oszlopokSzama)
 {
     return rand()%(sorokSzama*oszlopokSzama);
