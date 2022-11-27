@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-#include "jatekallas.h"
+#include "palya.h"
 #include "debugmalloc.h"
 
 
@@ -18,7 +18,7 @@ bool LetezikEMentes()
     }
     return false;
 }
-void Ment(Palya palya, int oszlopokSzama, int sorokSzama, time_t kezdesIdo)
+void Ment(Palya* palya, time_t kezdesIdo)
 {
     FILE *fp;
     time_t aktIdo;
@@ -30,19 +30,19 @@ void Ment(Palya palya, int oszlopokSzama, int sorokSzama, time_t kezdesIdo)
         return;
     }
 
-    fprintf(fp,"%d %d %d\n", oszlopokSzama, sorokSzama, (int)(time(&aktIdo) - kezdesIdo));
-    for(int i = 0; i < sorokSzama; ++i)
+    fprintf(fp,"%d %d %d\n", palya->oszlopokSzama, palya->sorokSzama, (int)(time(&aktIdo) - kezdesIdo));
+    for(int i = 0; i < palya->sorokSzama; ++i)
     {
-        for(int j = 0; j < oszlopokSzama; ++j)
+        for(int j = 0; j < palya->oszlopokSzama; ++j)
         {
-            if(palya.tabla[i][j].aknaE)
+            if(palya->tabla[i][j].aknaE)
                 fprintf(fp, "A ");
             else
                  fprintf(fp, "N ");
 
-            if(palya.tabla[i][j].all == feloldatlan)
+            if(palya->tabla[i][j].all == feloldatlan)
                 fprintf(fp, "N ");
-            else if(palya.tabla[i][j].all == feloldva)
+            else if(palya->tabla[i][j].all == feloldva)
                 fprintf(fp, "I ");
             else
                 fprintf(fp, "Z ");
@@ -70,7 +70,7 @@ Cella Beallit(char aknaE, char allapot)
     return cella;
 }
 
-Palya Beolvas(int* psorokSzama, int* poszlopokSzama, int* pelteltIdo)
+void Beolvas(Palya* palya, int* pelteltIdo)
 {
     FILE *fp;
     fp = fopen("mentettallas.txt", "r");
@@ -79,24 +79,23 @@ Palya Beolvas(int* psorokSzama, int* poszlopokSzama, int* pelteltIdo)
     {
         perror("A mentett játék nem betölthető!");
     }
-    Palya palya;
-    if(fscanf(fp, "%d %d %d\n", poszlopokSzama, psorokSzama, pelteltIdo) == 3)
+
+    if(fscanf(fp, "%d %d %d\n", palya->oszlopokSzama, palya->sorokSzama, pelteltIdo) == 3)
     {
-        palya = PalyatLetrehoz(*psorokSzama, *poszlopokSzama);
+        PalyaCellakatLetrehoz(palya);
     }
     char aknaE;
     char allapot;
-    for(int i = 0; i < *psorokSzama; ++i)
+    for(int i = 0; i < palya->sorokSzama; ++i)
     {
-        for(int j = 0; j < *poszlopokSzama; ++j)
+        for(int j = 0; j < palya->oszlopokSzama; ++j)
         {
             fscanf(fp, "%c %c ", &aknaE, &allapot);
-            palya.tabla[i][j] = Beallit(aknaE, allapot);
+            palya->tabla[i][j] = Beallit(aknaE, allapot);
         }
         fscanf(fp,"\n");
     }
     fclose(fp);
-    return palya;
 }
 
 void MentestTorol()

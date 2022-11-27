@@ -20,20 +20,20 @@ typedef struct Cella
 typedef struct Palya
 {
     Cella** tabla;
-    int oszlopokSzama, sorokSzama;
+    int oszlopokSzama, sorokSzama, aknakSzama;
     // -1, ha nem robbant még
     int robbanoX;
     // -1, ha nem robbant még
     int robbanoY;
 } Palya;
 
-void PalyaFelszabadit(Palya palya);
+void PalyaFelszabadit(Palya* palya);
 bool Lepes(Palya* palya);
-bool NyertE(Palya palya);
-void AknaElhelyez(Palya palya, int aknakSzama);
-void TablatFeltolt(Palya palya);
-Palya PalyatLetrehoz(int sorokSzama, int oszlopokSzama);
-void MindentFelold(Palya palya);
+bool NyertE(Palya* palya);
+void AknaElhelyez(Palya* palya);
+void TablatFeltolt(Palya* palya);
+void PalyaCellakatLetrehoz(Palya* palya);
+void MindentFelold(Palya* palya);
 //int IdotSzamol(time_t kezdesIdo);
 
 #endif // JATEKALLAS_H_INCLUDED

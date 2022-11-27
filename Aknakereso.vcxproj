@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="c-econio\econio.c" />
-    <ClCompile Include="jatekallas.c" />
+    <ClCompile Include="palya.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="megjelenites.c" />
     <ClCompile Include="mentes.c" />
@@ -136,7 +136,7 @@
   <ItemGroup>
     <ClInclude Include="c-econio\econio.h" />
     <ClInclude Include="debugmalloc.h" />
-    <ClInclude Include="jatekallas.h" />
+    <ClInclude Include="palya.h" />
     <ClInclude Include="megjelenites.h" />
     <ClInclude Include="mentes.h" />
   </ItemGroup>

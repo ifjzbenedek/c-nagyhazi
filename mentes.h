@@ -1,12 +1,10 @@
 #ifndef MENTES_H_INCLUDED
 #define MENTES_H_INCLUDED
-#include "jatekallas.h"
+#include "palya.h"
 
-void Ment(Palya palya, int oszlopokSzama, int sorokSzama);
+void Ment(Palya* palya);
 
-Palya Beolvas(int* psorokSzama, int* poszlopokSzama);
-
-Palya Beolvas(int* psorokSzama, int* poszlopokSzama);
+Palya Beolvas(Palya* palya, time_t* elteltIdo);
 
 bool LetezikEMentes();
 

@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include "c-econio/econio.h"
-#include "jatekallas.h"
+#include "palya.h"
 #include "debugmalloc.h"
 
 
@@ -14,16 +14,16 @@ void KepernyoTorolEsKezdesbeMozog()
     econio_gotoxy(0, 0);
 }
 
-void Kirajzol(Palya palya)
+void Kirajzol(Palya* palya)
 {
     KepernyoTorolEsKezdesbeMozog();
-    for(int i = 0; i < palya.sorokSzama; ++i)
+    for(int i = 0; i < palya->sorokSzama; ++i)
     {
-        for(int j = 0; j < palya.oszlopokSzama; ++j)
+        for(int j = 0; j < palya->oszlopokSzama; ++j)
         {
-            if(palya.tabla[i][j].all == feloldatlan)
+            if(palya->tabla[i][j].all == feloldatlan)
                 printf("# ");
-            else if (palya.tabla[i][j].all == megjelolve)
+            else if (palya->tabla[i][j].all == megjelolve)
             {
                 econio_textcolor(COL_RED);
                 printf("Z ");
@@ -31,9 +31,9 @@ void Kirajzol(Palya palya)
             }
             else
             {
-                if(palya.tabla[i][j].all == feloldva && palya.tabla[i][j].aknaE)
+                if(palya->tabla[i][j].all == feloldva && palya->tabla[i][j].aknaE)
                 { 
-                    if (palya.robbanoX == i && palya.robbanoY == j)
+                    if (palya->robbanoX == i && palya->robbanoY == j)
                     {
                         econio_textcolor(COL_RED);
                         printf("* ");
@@ -57,21 +57,22 @@ void Kirajzol(Palya palya)
         printf("%c ", 'A' + i);
         printf("\n");
     }
-    for(int i = 0; i < palya.oszlopokSzama; i++)
+    for(int i = 0; i < palya->oszlopokSzama; i++)
     {
         printf("%c ", 'a'+i);
     }
     printf("\n\n");
 }
 
-void PalyaParamaterketEsAknaSzamotBeker(int* poszlopokSzama, int* psorokSzama, int* paknakSzama)
+void PalyaParamaterketEsAknaSzamotBekerEsBeallit(Palya* palya)
 {
+    int oszlopokSzama, sorokSzama, aknakSzama;
     printf("Add meg a pálya méreteit és az aknák számát oszlop:sor:aknák formátumban!\n");
     bool sikeres = false;
     while(!sikeres)
     {
         sikeres = true;
-        if(scanf("%d:%d:%d", poszlopokSzama, psorokSzama, paknakSzama) != 3)
+        if(scanf("%d:%d:%d", &oszlopokSzama, &sorokSzama, &aknakSzama) != 3)
         {
             printf("Próbálja újra, nem megfelelő a formátum!\n");
             sikeres = false;
@@ -79,47 +80,47 @@ void PalyaParamaterketEsAknaSzamotBeker(int* poszlopokSzama, int* psorokSzama, i
         }
         else
         {
-            if(*poszlopokSzama < 3)
+            if(oszlopokSzama < 3)
             {
                 printf("Túl kevés oszlop! (min3)\n");
                 sikeres = false;
             }
-            else if(*poszlopokSzama > 20)
+            else if(oszlopokSzama > 20)
             {
                 printf("Túl sok oszlop! (max20)\n");
                 sikeres = false;
             }
 
-            if(*psorokSzama < 3)
+            if(sorokSzama < 3)
             {
                 printf("Túl kevés sor! (min3)\n");
                 sikeres = false;
             }
-            else if(*psorokSzama > 20)
+            else if(sorokSzama > 20)
             {
                 printf("Túl sok sor! (max20)\n");
                 sikeres = false;
             }
 
-            if(*paknakSzama > (*psorokSzama * *poszlopokSzama / 2))
+            if(aknakSzama > (sorokSzama * oszlopokSzama / 2))
             {
                 printf("Túl sok akna! (max sorok*oszlopok/2 méretű lehet)\n");
                 sikeres = false;
             }
-            else if(*paknakSzama < 3)
+            else if(aknakSzama < 3)
             {
                 printf("Túl kevés akna! (min 3)\n");
                 sikeres = false;
             }
         }
-
-
     }
-
+    palya->sorokSzama = sorokSzama;
+    palya->oszlopokSzama = oszlopokSzama;
+    palya->aknakSzama = aknakSzama;
 
 }
 
-void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus, Palya palya)
+void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus, Palya* palya)
 {
     printf("Várom a következõ lépését típus:sor:oszlop formátumban!\n");
     char lepesSor, lepesOszlop, lepesTipus;
@@ -135,12 +136,12 @@ void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus, P
         }
         else
         {
-            if (lepesSor - 'A' < 0 || lepesSor - 'A' >= palya.sorokSzama)
+            if (lepesSor - 'A' < 0 || lepesSor - 'A' >= palya->sorokSzama)
             {
                 printf("Nem létezik ilyen sor! Próbálja újra!\n");
                 sikeres = false;
             }
-            else if (lepesOszlop - 'a' < 0 || lepesOszlop - 'a' >= palya.oszlopokSzama)
+            else if (lepesOszlop - 'a' < 0 || lepesOszlop - 'a' >= palya->oszlopokSzama)
             {
                 printf("Nem létezik ilyen oszlop! Próbálja újra!\n");
                 sikeres = false;
@@ -150,7 +151,7 @@ void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* plepesTipus, P
                 printf("Nem létezik ilyen funkció! Próbálja újra!\n");
                 sikeres = false;
             }
-            else if (lepesTipus == 'M' && palya.tabla[lepesSor - 'A'][lepesOszlop - 'a'].all == feloldva)
+            else if (lepesTipus == 'M' && palya->tabla[lepesSor - 'A'][lepesOszlop - 'a'].all == feloldva)
             {
                 printf("Ez már fel van oldva! Csináljon mást!\n");
                 sikeres = false;
@@ -201,12 +202,18 @@ char* JatekKivalasztas()
 
 void GyozelmetKiir(int elteltIdo)
 {
-    printf("Gratulálunk, győzött! Az ideje: %d másodperc\n", elteltIdo);
+    printf("Gratulálunk, nyert! Az ideje: %d másodperc\n", elteltIdo);
 }
 
 void VeresegetKiir()
 {
-    printf("Aknára léptett, sajnos vesztett. Új játék kezdéséhez nyomjon meg egy billentyűt!\n");
+    printf("Aknára léptett, sajnos vesztett.\n");
 }
 
+void UjrainditasKiir()
+{
+    printf("Nyomjon meg egy billentyűt az újraindításhoz!\n");
+    getch();
+    KepernyoTorolEsKezdesbeMozog();
+}
 
