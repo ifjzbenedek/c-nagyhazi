@@ -31,10 +31,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="jatekallas.c">
+		<Unit filename="c-econio/econio.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="jatekallas.h" />
+		<Unit filename="c-econio/econio.h" />
+		<Unit filename="debugmalloc.h" />
+		<Unit filename="jatek.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="jatek.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,6 +51,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="mentes.h" />
+		<Unit filename="palya.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="palya.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

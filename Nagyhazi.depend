@@ -14,28 +14,86 @@
 1669234695 c:\zozi\codeblocks\c-nagyhazi\jatekallas.h
 	<stdbool.h>
 
-1669332371 c:\zozi\codeblocks\c-nagyhazi\megjelenites.h
+1669570808 c:\zozi\codeblocks\c-nagyhazi\megjelenites.h
 
-1669379267 source:c:\zozi\codeblocks\c-nagyhazi\main.c
+1669568622 source:c:\zozi\codeblocks\c-nagyhazi\main.c
+
+1669568516 source:c:\zozi\codeblocks\c-nagyhazi\megjelenites.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"c-econio/econio.h"
+	"palya.h"
+	"debugmalloc.h"
+
+1669567232 source:c:\zozi\codeblocks\c-nagyhazi\mentes.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
-	"jatekallas.h"
+	<time.h>
+	"palya.h"
+	"debugmalloc.h"
+
+1669567232 c:\zozi\codeblocks\c-nagyhazi\mentes.h
+	"palya.h"
+
+1669497563 source:c:\zozi\codeblocks\c-nagyhazi\c-econio\econio.c
+	"econio.h"
+	<windows.h>
+	<stdio.h>
+	<conio.h>
+	<assert.h>
+	"../debugmalloc.h"
+	<assert.h>
+	<stdio.h>
+	<termios.h>
+	<unistd.h>
+	<stdbool.h>
+	<sys/time.h>
+	<sys/types.h>
+	<ctype.h>
+	<string.h>
+	<time.h>
+
+1557401935 c:\zozi\codeblocks\c-nagyhazi\c-econio\econio.h
+	<stdbool.h>
+
+1669497244 c:\zozi\codeblocks\c-nagyhazi\debugmalloc.h
+	<stdbool.h>
+	<stddef.h>
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<stdarg.h>
+	<process.h>
+	<unistd.h>
+
+1669569862 source:c:\zozi\codeblocks\c-nagyhazi\jatek.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<stdint.h>
+	"palya.h"
 	"megjelenites.h"
 	"mentes.h"
+	"debugmalloc.h"
+	"jatek.h"
 
-1669380984 source:c:\zozi\codeblocks\c-nagyhazi\megjelenites.c
-	<stdio.h>
-	<stdlib.h>
-	"jatekallas.h"
-	<string.h>
+1669570711 c:\zozi\codeblocks\c-nagyhazi\palya.h
+	<stdbool.h>
+	<time.h>
 
-1669332430 source:c:\zozi\codeblocks\c-nagyhazi\mentes.c
+1669571055 c:\zozi\codeblocks\c-nagyhazi\jatek.h
+
+1669570644 source:c:\zozi\codeblocks\c-nagyhazi\palya.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
-	"jatekallas.h"
-
-1669332601 c:\zozi\codeblocks\c-nagyhazi\mentes.h
-	"jatekallas.h"
+	<time.h>
+	"palya.h"
+	"megjelenites.h"
+	"debugmalloc.h"
 
