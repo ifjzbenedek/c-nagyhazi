@@ -6,8 +6,6 @@
 #include "megjelenites.h"
 #include "debugmalloc.h"
 
-
-//Olyan pályát vár, ahol már meg van adva a sorok és az oszlopok száma
 void PalyaCellakatLetrehoz (Palya* palya)
 {
     palya->robbanoX = -1;
@@ -41,10 +39,8 @@ void TablatFeltolt(Palya* palya)
     {
         for(int j = 0 ; j < palya->oszlopokSzama; ++j)
         {
-            Cella ujCella;
-            ujCella.aknaE = false;
-            ujCella.all = feloldatlan;
-            palya->tabla[i][j] = ujCella;
+            palya->tabla[i][j].aknaE = false;
+            palya->tabla[i][j].all = feloldatlan;
         }
     }
 }

@@ -1,6 +1,7 @@
 #ifndef MEGJELENITES_H_INCLUDED
 #define MEGJELENITES_H_INCLUDED
 
+// A konzol kezdőpozíciójába újrarajzolja a pályát
 void Kirajzol(Palya* palya);
 
 void LepestBeker(int* plepesSorSzam, int* plepesOszlopSzam, char* lepesTipus, Palya* palya);
