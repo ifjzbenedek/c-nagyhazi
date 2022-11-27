@@ -34,6 +34,8 @@ void AknaElhelyez(Palya* palya);
 void TablatFeltolt(Palya* palya);
 void PalyaCellakatLetrehoz(Palya* palya);
 void MindentFelold(Palya* palya);
-//int IdotSzamol(time_t kezdesIdo);
+bool VanEMegIdo(int idoKorlat, int kezdesIdo);
+int IdoKorlatotSzamol(Palya* palya);
+void IdotSzamolPercben(int* pperc, int* pmp, int kezdesIdo);
 
 #endif // JATEKALLAS_H_INCLUDED

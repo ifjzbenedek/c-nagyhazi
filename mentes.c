@@ -6,8 +6,6 @@
 #include "debugmalloc.h"
 
 
-#pragma warning( disable : 4996 )
-
 bool LetezikEMentes()
 {
     FILE *fp;
@@ -80,7 +78,7 @@ void Beolvas(Palya* palya, int* pelteltIdo)
         perror("A mentett játék nem betölthető!");
     }
 
-    if(fscanf(fp, "%d %d %d\n", palya->oszlopokSzama, palya->sorokSzama, pelteltIdo) == 3)
+    if(fscanf(fp, "%d %d %d\n", &palya->oszlopokSzama, &palya->sorokSzama, pelteltIdo) == 3)
     {
         PalyaCellakatLetrehoz(palya);
     }

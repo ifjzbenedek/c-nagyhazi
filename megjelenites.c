@@ -6,8 +6,6 @@
 #include "palya.h"
 #include "debugmalloc.h"
 
-
-#pragma warning( disable : 4996 )
 void KepernyoTorolEsKezdesbeMozog()
 {
     econio_clrscr();
@@ -174,35 +172,29 @@ void MenuKirajzol()
     printf("Új játék vagy régi játék betöltése. Új játék esetén írd be, hogy “uj”, mentett játék esetén pedig, hogy “regi”:\n");
 }
 
-char* JatekKivalasztas()
+bool JatekKivalasztas_UjE()
 {
     // TODO Ékezetet olvasson!
     char* regi = "regi";
     char valasztas[100];
-    bool sikeres = false;
-    while(!sikeres)
+    while(true)
     {
-        sikeres = true;
         if(scanf("%s", valasztas) != 1)
-        {
             printf("Próbálja újra, nem megfelelő a formátum!\n");
-            sikeres = false;
-            scanf("%*[^\n]");
-        }
-        else if(strcmp("uj", valasztas) != 0 && strcmp("regi", valasztas) != 0)
-        {
-            printf("Kérem ˝regi˝ vagy ˝uj˝ közül válasszon!\n");
-            sikeres = false;
-            scanf("%*[^\n]");
-        }
+        else if(strcmp("uj", valasztas) == 0)
+            return true;
+        else if (strcmp("regi", valasztas) == 0)
+            return false;
 
+        scanf("%*[^\n]");
     }
-    return valasztas;
 }
 
-void GyozelmetKiir(int elteltIdo)
+void GyozelmetKiir(int kezdIdo)
 {
-    printf("Gratulálunk, nyert! Az ideje: %d másodperc\n", elteltIdo);
+    int perc, mp;
+    IdotSzamolPercben(&perc, &mp, kezdIdo);
+    printf("Gratulálunk, nyert! Az ideje: %d perc %d másodperc\n", perc, mp);
 }
 
 void VeresegetKiir()
@@ -215,5 +207,15 @@ void UjrainditasKiir()
     printf("Nyomjon meg egy billentyűt az újraindításhoz!\n");
     getch();
     KepernyoTorolEsKezdesbeMozog();
+}
+
+void IdoLetelt()
+{
+    printf("Sajnos kifutott az időből és vesztett.\n");
+}
+
+void IdoKorlatotKiir(int idoKorlat)
+{
+    printf("A rendelkezésre álló idő a játék kezdetétől: %d perc\n", idoKorlat);
 }
 

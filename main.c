@@ -22,16 +22,15 @@ int main()
     
     Palya palya;
     time_t kezdIdo, aktIdo;
-    
     bool kelleUjat = false;
     if(LetezikEMentes())
     {
         MenuKirajzol();
-        char* mode = JatekKivalasztas();
-        if (strcmp(mode, "regi") == 0)
+        bool ujE = JatekKivalasztas_UjE();
+        if (!ujE)
         {
             int elteltIdo;
-            palya = Beolvas(&palya, &elteltIdo);
+            Beolvas(&palya, &elteltIdo);
             kezdIdo = time(&aktIdo) - elteltIdo;
         }
         else
@@ -46,12 +45,15 @@ int main()
         {
             JatekInditas(&palya, &kezdIdo);
         }
+        kelleUjat = true;
+        int idoKorlat = IdoKorlatotSzamol(&palya);
         bool vege = false;
         Kirajzol(&palya);
+        IdoKorlatotKiir(idoKorlat);
         while (!vege)
         {
             LepesTipusokatKiir();
-            Ment(&palya, &kezdIdo);
+            Ment(&palya, kezdIdo);
             if (Lepes(&palya))
             {
                 MindentFelold(&palya);
@@ -63,8 +65,16 @@ int main()
             {
                 MindentFelold(&palya);
                 Kirajzol(&palya);
-                GyozelmetKiir(time(&aktIdo) - kezdIdo);
+                GyozelmetKiir(kezdIdo);
                 vege = true;
+            }
+            else if (!VanEMegIdo(idoKorlat, kezdIdo))
+            {
+                MindentFelold(&palya);
+                Kirajzol(&palya);
+                IdoLetelt();
+                vege = true;
+
             }
             else
                 Kirajzol(&palya);

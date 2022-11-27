@@ -2,9 +2,9 @@
 #define MENTES_H_INCLUDED
 #include "palya.h"
 
-void Ment(Palya* palya);
+void Ment(Palya* palya, time_t kezdesIdo);
 
-Palya Beolvas(Palya* palya, time_t* elteltIdo);
+void Beolvas(Palya* palya, time_t* elteltIdo);
 
 bool LetezikEMentes();
 

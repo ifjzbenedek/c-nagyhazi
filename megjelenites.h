@@ -9,12 +9,16 @@ void LepesTipusokatKiir();
 
 void PalyaParamaterketEsAknaSzamotBekerEsBeallit(Palya* palya);
 
-char* JatekKivalasztas();
+bool JatekKivalasztas_UjE();
 
 void GyozelmetKiir(int ido);
 
 void VeresegetKiir();
 
 void UjrainditasKiir();
+
+void IdoLetelt();
+
+void IdoKorlatotKiir(int idoKorlat);
 
 #endif // MEGJELENITES_H_INCLUDED
